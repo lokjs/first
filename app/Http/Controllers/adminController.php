@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\admin;
 class adminController extends Controller
 {
-
+ 
 	   use AuthenticatesUsers;
     /**
      * Handle an authentication attempt.
@@ -23,13 +24,6 @@ class adminController extends Controller
 	{
     	return '/admin/login';
 	}
-    public function authenticate()
-    {
-        if (Auth::attempt(['email' => $email, 'password' => $password])) {
-            // Authentication passed...
-            return redirect()->intended('dashboard');
-        }
-    }
     public function index(){
     	if (Auth::guard('admin')->check())
 		{
@@ -45,21 +39,13 @@ class adminController extends Controller
     }
     public function postlogin(Request $request){
     	$data=$request->all();
-    	// print_r($data);
         if (Auth::guard('admin')->attempt(['name' => $data['name'], 'password' => $data['password'] ])) {
-            return redirect('admin');
-            // echo "11";
+            //更新ip
+            $ip=$request->ip();
+            $id = Auth::guard('admin')->id();
+            Admin::where('id',$id)->update(["ip"=>$ip]);
         }
-		else
-		{
-			echo "error";
-		}	
-    }
-   public function update(Request $request)
-    {
-        // $request->user() 返回认证过的用户的实例...
-        $data=$request->all();
-        
+      return redirect('admin');      
     }
 
 }
