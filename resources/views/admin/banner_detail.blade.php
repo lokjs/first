@@ -27,7 +27,7 @@
                         <a href="/admin/banner"><i class="fa fa-reply">返回</i></a>
                     </header>
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form"action="{{ url('admin/banner') }}"  method="post">
+                        <form class="form-horizontal" role="form"action="{{ url('admin/banner') }}"  method="post" enctype="multipart/form-data">
                          {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="inputEmail1" class="col-lg-2 col-sm-2 control-label">标题</label>
@@ -39,7 +39,7 @@
                             <div class="form-group">
                                 <label for="url" class="col-lg-2 col-sm-2 control-label">跳转地址地址</label>
                                 <div class="col-lg-10">
-                                    <input type="text" class="form-control" id="url" name="url" placeholder="跳转地址,不填则点击则不跳转" required>
+                                    <input type="text" class="form-control" id="url" name="url" placeholder="跳转地址,不填则点击则不跳转"  >
                                 </div>
                             </div>
                             <div class="form-group">

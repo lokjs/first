@@ -21,6 +21,6 @@ class banner extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'url', 'is_show','create_author','update_author'
+        'is_show','create_author','update_author'
     ];
 }

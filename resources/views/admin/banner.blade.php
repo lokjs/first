@@ -24,7 +24,7 @@
 			<button class="btn btn-default" data-toggle="button">
                 <i class="fa fa-refresh">刷新</i>
 	        </button>	
-			<a href="/admin/banner/add">
+			<a href="/admin/banner/create">
             <button class="btn btn-default"  >
                 <i class="fa fa-plus">新增</i>
 	        </button>
@@ -53,22 +53,17 @@
         </tr>
         </thead>
         <tbody>
+        @foreach($row as $value)
         <tr class="gradeX">
-            <td>Trident</td>
-            <td>Internet
-                Explorer 4.0</td>
-            <td>Win 95+</td>
-            <td class="center hidden-phone">4</td>
-            <td class="center hidden-phone">X</td>
+            <td> {{ $value->title }}</td>
+            <td><img src="/uploads/{{$value->pic}}" style="width: 150px"></td>
+            <td>{{ $value->url }}</td>
+            <td class="center hidden-phone">@if ($value->is_show==1) 是@else否 @endif</td>
+            <td class="center hidden-phone"><a><i class="fa fa-edit"></i></a></td>
+            <td class="center hidden-phone"><a><i class="fa fa-add"></i></a></td>
         </tr>
-        <tr class="gradeC">
-            <td>ray</td>
-            <td>Internet
-                Explorer 5.0</td>
-            <td>Win 95+</td>
-            <td class="center hidden-phone">5</td>
-            <td class="center hidden-phone">C</td>
-        </tr>
+        @endforeach
+ 
  
         </tbody>
  
