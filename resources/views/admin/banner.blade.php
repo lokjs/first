@@ -59,7 +59,7 @@
             <td><img src="/uploads/{{$value->pic}}" style="width: 150px"></td>
             <td>{{ $value->url }}</td>
             <td class="center hidden-phone">@if ($value->is_show==1) 是@else否 @endif</td>
-            <td class="center hidden-phone"><a><i class="fa fa-edit"></i></a></td>
+            <td class="center hidden-phone"><a href="/admin/banner/{{$value->id}}/edit"><i class="fa fa-edit"></i></a></td>
             <td class="center hidden-phone"><a><i class="fa fa-add"></i></a></td>
         </tr>
         @endforeach

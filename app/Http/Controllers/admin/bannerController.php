@@ -26,13 +26,18 @@ class bannerController extends Controller
     }
     
     public function index(){
-         $banner = new banner;
+        $banner=new banner;
          $row=$banner->orderBy('id','desc')->get();
         return view('admin.banner', [
         'row' => $row]);
     }
     public function create(){
         return view('admin/banner_detail');
+    }
+    public function edit($id){
+        $banner=new banner;
+        $row=$banner->where('id',$id)->get();
+        return view('admin/banner_edit',['row'=>$row]);
     }
     public function store(Request $request)
     {
@@ -56,20 +61,17 @@ class bannerController extends Controller
         if($bool)
         {
         $banner = new banner;
-        $banner->title = $request->get('title');
-        if($request->get('url'))
-        {
-            $banner->url = $request->get('url');
-        }
-        $banner->pic = $filename;
-        $banner->is_show = ($request->get('is_show')=='on')?1:0;
-        $banner->create_author=Auth::guard('admin')->id();
-        $banner->update_author=Auth::guard('admin')->id();
-        if($banner->save()){
+        $is_show=($request->get('is_show')=='on')?1:0;
+        $obj=$banner->updateOrCreate(['id'=> $request->get('id')],[
+            'title'=>$request->get('title'),
+            'url'=>$request->get('url'),
+            'pic'=>$filename,
+            'is_show'=>$is_show ,
+            'create_author'=>Auth::guard('admin')->id(),
+            'update_author'=>Auth::guard('admin')->id(),
+            ]);
             return redirect('/admin/banner');
-        }else{
-            return redirect()->back()->withInput()->withErrors('保存失败！'); 
-        }
+         
         }
         else
         {
