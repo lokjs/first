@@ -56,7 +56,7 @@
         @foreach($row as $value)
         <tr class="gradeX">
             <td> {{ $value->title }}</td>
-            <td><img src="/uploads/{{$value->pic}}" style="width: 150px"></td>
+            <td><img src="/uploads/banner/{{$value->pic}}" style="width: 150px"></td>
             <td>{{ $value->url }}</td>
             <td class="center hidden-phone">@if ($value->is_show==1) 是@else否 @endif</td>
             <td class="center hidden-phone"><a href="/admin/banner/{{$value->id}}/edit"><i class="fa fa-edit"></i></a></td>

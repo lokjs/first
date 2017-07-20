@@ -7,8 +7,9 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\banner;
-use Storage;
- 
+
+
+use App\Services\UploadsManager;
 
 class bannerController extends Controller
 {
@@ -20,9 +21,11 @@ class bannerController extends Controller
      * @return Response
      */
     protected $redirectPath = '/admin';
-    public function __construct()
+    protected $manager;
+    public function __construct(UploadsManager $manager)
     {
         $this->middleware('guest');
+        $this->manager = $manager;
     }
     
     public function index(){
@@ -46,32 +49,31 @@ class bannerController extends Controller
         $this->validate($request, [
            'title' => 'required|max:255'
         ]);
-        $file = $request->file('pic');
-            // 文件是否上传成功
-        if ($file->isValid()) {
-            // $originalName = $file->getClientOriginalName(); // 文件原名
-            $ext = $file->getClientOriginalExtension();     // 扩展名
-            $realPath = $file->getRealPath();   //临时文件的绝对路径
-            // $type = $file->getClientMimeType();     // image/jpeg
-            // 上传文件
-            $filename = time(). uniqid() . '.' . $ext;
-            // 使用我们新建的uploads本地存储空间（目录）
-            $bool = Storage::disk('uploads')->put($filename, file_get_contents($realPath));
-        }
-        if($bool)
+ 
+
+        $this->manager->setFolderName('uploads/banner');
+        $upload = $this->manager->uploadImage($request,'pic');
+
+
+
+        if($upload['error']==NULL)
         {
+
         $banner = new banner;
-        $is_show=($request->get('is_show')=='on')?1:0;
-        $obj=$banner->updateOrCreate(['id'=> $request->get('id')],[
-            'title'=>$request->get('title'),
-            'url'=>$request->get('url'),
-            'pic'=>$filename,
-            'is_show'=>$is_show ,
-            'create_author'=>Auth::guard('admin')->id(),
-            'update_author'=>Auth::guard('admin')->id(),
-            ]);
+        $banner->title=$request->get('title');
+        $banner->url=$request->get('url');
+        $banner->pic=$upload['filename'];
+        $banner->is_show=($request->get('is_show')=='on')?1:0;
+        $banner->create_author=Auth::guard('admin')->id();
+        $banner->update_author=Auth::guard('admin')->id();
+        $banner->save();
+
+        if($shop->save()){
             return redirect('/admin/banner');
-         
+            }else{
+                return redirect()->back()->withInput()->withErrors('保存失败！'); 
+        }
+
         }
         else
         {
@@ -79,5 +81,6 @@ class bannerController extends Controller
         }
  
     }
+    
  
 }

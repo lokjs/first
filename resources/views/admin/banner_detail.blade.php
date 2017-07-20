@@ -29,7 +29,6 @@
                     <div class="panel-body">
                         <form class="form-horizontal" role="form"action="{{ url('admin/banner') }}"  method="post" enctype="multipart/form-data">
                          {{ csrf_field() }}
-                         <input type="hidden" name="id" value="0">
                             <div class="form-group">
                                 <label for="inputEmail1" class="col-lg-2 col-sm-2 control-label">标题</label>
                                 <div class="col-lg-10">
