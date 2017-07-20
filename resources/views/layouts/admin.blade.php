@@ -35,6 +35,9 @@
   <script src="js/html5shiv.js"></script>
   <script src="js/respond.min.js"></script>
   <![endif]-->
+  <script src="/js/jquery-1.10.2.min.js"></script>
+
+<script type="text/javascript" src="/layer/layer.js"></script>
 </head>
 
 <body class="sticky-header">
@@ -149,7 +152,7 @@
 </section>
 
 <!-- Placed js at the end of the document so the pages load faster -->
-<script src="/js/jquery-1.10.2.min.js"></script>
+ 
 <script src="/js/jquery-ui-1.9.2.custom.min.js"></script>
 <script src="/js/jquery-migrate-1.2.1.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
@@ -174,15 +177,10 @@
 <script src="/js/flot-chart/jquery.flot.resize.js"></script>
 
 
-<!--Morris Chart-->
-<script src="/js/morris-chart/morris.js"></script>
-<script src="/js/morris-chart/raphael-min.js"></script>
-
 <!--Calendar-->
 <script src="/js/calendar/clndr.js"></script>
 <script src="/js/calendar/evnt.calendar.init.js"></script>
 <script src="/js/calendar/moment-2.2.1.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
 
 <!--common scripts for all pages-->
 <script src="/js/scripts.js"></script>
@@ -193,7 +191,7 @@
 
 <!--ios7-->
 <script src="/js/ios-switch/switchery.js" ></script>
-<script src="/js/ios-switch/ios-init.js" ></script>
-
+<script src="/js/ios-switch/ios-init.js" ></script> 
+ 
 </body>
 </html>

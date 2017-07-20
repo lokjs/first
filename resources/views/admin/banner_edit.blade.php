@@ -27,26 +27,26 @@
                         <a href="/admin/banner"><i class="fa fa-reply">返回</i></a>
                     </header>
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form"action="{{ url('admin/banner') }}"  method="post" enctype="multipart/form-data">
+                        <form class="form-horizontal" role="form" action="{{ url('admin/banner/'.$row->id) }}"  method="post" enctype="multipart/form-data">
                          {{ csrf_field() }}
+                         {{ method_field('PUT') }}
                             <div class="form-group">
                                 <label for="inputEmail1" class="col-lg-2 col-sm-2 control-label">标题</label>
                                 <div class="col-lg-10">
-                                    <input type="text" class="form-control" id="inputEmail1"  name="title"  value="{{ $row[0]->title }}" required>
+                                    <input type="text" class="form-control" id="inputEmail1"  name="title"  value="{{ $row->title }}" required>
                                 </div>
                             </div>
-                                <input type="text" name="id" value="{{$row[0]->id}}">
                             <div class="form-group">
                                 <label for="url" class="col-lg-2 col-sm-2 control-label">跳转地址地址</label>
                                 <div class="col-lg-10">
-                                    <input type="text" class="form-control" id="url" name="url"    value="{{ $row[0]->url }}">
+                                    <input type="text" class="form-control" id="url" name="url"    value="{{ $row->url }}">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="is_show" class="col-lg-2 col-sm-2 control-label">是否显示</label>
                                 <div class="col-lg-10 slide-toggle">
                                     <input type="checkbox" class="js-switch"  name="is_show" 
-                                     @if( $row[0]->is_show==1 ) checked @endif               
+                                     @if( $row->is_show==1 ) checked @endif               
                                      />
                                 </div>
                             </div>
@@ -56,14 +56,14 @@
                                     <div class="col-md-9">
                                         <div class="fileupload fileupload-new" data-provides="fileupload">
                                             <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                                                <img src="/uploads/{{$row[0]->pic}} " alt="" />
+                                                <img src="/uploads/banner/{{$row->pic}} " alt="" />
                                             </div>
                                             <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
                                             <div>
                                                    <span class="btn btn-default btn-file">
                                                    <span class="fileupload-new"><i class="fa fa-paper-clip"></i> 选择图片</span>
                                                    <span class="fileupload-exists"><i class="fa fa-undo"></i> 更换</span>
-                                                   <input type="file" name="pic" class="default" value="{{$row[0]->pic}}" />
+                                                   <input type="file" name="pic" class="default" value="{{$row->pic}}" />
                                                    </span>
                                                 <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash"></i> 移除</a>
                                             </div>

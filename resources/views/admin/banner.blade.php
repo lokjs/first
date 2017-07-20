@@ -49,6 +49,7 @@
             
             <th class="hidden-phone">是否显示</th>
             <th class="hidden-phone">编辑</th>
+            <th class="hidden-phone">查看</th>
             <th class="hidden-phone">删除</th>
         </tr>
         </thead>
@@ -59,11 +60,18 @@
             <td><img src="/uploads/banner/{{$value->pic}}" style="width: 150px"></td>
             <td>{{ $value->url }}</td>
             <td class="center hidden-phone">@if ($value->is_show==1) 是@else否 @endif</td>
-            <td class="center hidden-phone"><a href="/admin/banner/{{$value->id}}/edit"><i class="fa fa-edit"></i></a></td>
-            <td class="center hidden-phone"><a><i class="fa fa-add"></i></a></td>
+            <td class="center hidden-phone"><a href="/admin/banner/{{$value->id}}" class="btn btn-info btn-xs">编辑</a></td>
+            <td class="center hidden-phone"><a href="/admin/banner/{{$value->id}}/edit" class="btn btn-info btn-xs">编辑</a></td>
+            <td class="center hidden-phone"> <form action="{{ URL('/admin/banner/'.$value->id) }}"  method="POST" style="display:inline;">
+                        {{ method_field('DELETE') }}
+                        {{ csrf_field() }}
+                        <a class="btn btn-danger btn-xs" onclick="dcheck(this)">删除</a>
+
+                    </form></td>
+
         </tr>
         @endforeach
- 
+                     
  
         </tbody>
  
@@ -73,4 +81,16 @@
         </section>
         </div>
         </div>
+<script type="text/javascript">
+function dcheck(aa){
+    layer.confirm('是否要删除当前数据', {
+  btn: ['确定','取消'] //按钮
+}, function(){
+    $(aa).parent("form").submit();
+}, function(){
+});
+
+}
+</script>
+ 
 @endsection('content')
