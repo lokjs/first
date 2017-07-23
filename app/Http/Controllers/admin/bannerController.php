@@ -28,19 +28,19 @@ class bannerController extends Controller
         $this->manager = $manager;
     }
     
-    public function index(){
+    public function index(Request $request){
         $banner=new banner;
-         $row=$banner->where('del','0')->orderBy('id','desc')->get();
-        return view('admin.banner', [
-        'row' => $row]);
+         $row=$banner->where('del','0')->orderBy('id','desc')->paginate(10);
+        return view('admin.banner', ['row' => $row,'title'=>'','uri'=>'banner','group'=>'content']);
     }
     public function create(){
-        return view('admin/banner_detail');
+        return view('admin/banner_detail',['uri'=>'banner','group'=>'content']);
     }
     public function edit($id){
         $row=banner::where('id',$id)->where('del',0)->first();
-        return view('admin/banner_edit',['row'=>$row]);
+        return view('admin/banner_edit',['row'=>$row,'uri'=>'banner','group'=>'content']);
     }
+
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -62,7 +62,6 @@ class bannerController extends Controller
             }else{
                 return redirect()->back()->withInput()->withErrors('保存失败！'); 
         }
-
         }
         else
         {
@@ -70,8 +69,6 @@ class bannerController extends Controller
         }
  
     }
-
-
     public function update(Request $request,$id)
     {
 
@@ -91,21 +88,30 @@ class bannerController extends Controller
             }else{
                 return redirect()->back()->withInput()->withErrors('保存失败！'); 
         }
-
     }
- 
     public function destroy(Request $request,$id){
         //伪静态删除
         $banner=banner::find($id);
         $banner->del=1;
-        $banner->save()
-    }
-    
+        if($banner->save())
+        {
+            return redirect('/admin/banner');
+        } 
+        else
+        {
+            return redirect()->back()->widthInput()->widthErrors('删除失败');
+        }
 
+    }
     public function show(Request $request,$id) {
         $banner=banner::where('id',$id)->where('del',0)->first();
-        return view('admin.banner_show');
+        return view('admin.banner_show',['row'=>$banner,'uri'=>'banner','group'=>'content']);
 
+    }
+    public function search(Request $request){
+        $title=$request->get('title');
+        $banner=banner::where('title','like','%'.$title.'%')->where('del',0)->paginate(10);
+        return view('admin.banner',['row'=>$banner,'title'=>$title,'uri'=>'banner','group'=>'content']);
     }
  
 }

@@ -4,22 +4,7 @@
 
 <!--file upload-->
 <link rel="stylesheet" type="text/css" href="/css/bootstrap-fileupload.min.css" />
-<div class="page-heading">
-	 <ul class="breadcrumb">
-        <li>
-            <a href="/admin">首页</a>
-        </li>
-        <li>
-            <a href="/admin/banner">轮播图</a>
-        </li>
-
-        <li class="active">
-        	新增
-        </li>
-    </ul>
-
-</div>
-<div class="wrapper">
+<div class="wrapper wrapper1">
         <div class="row">
         <div class="col-sm-12">
                 <section class="panel">
@@ -79,7 +64,7 @@
  
                             <div class="form-group">
                                 <div class="col-lg-offset-2 col-lg-10">
-                                    <button type="submit" class="btn btn-primary">新增</button>
+                                    <button type="submit" class="btn btn-primary">修改</button>
                                 </div>
                             </div>
                         </form>

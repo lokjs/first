@@ -4,37 +4,52 @@
 
 <!--file upload-->
 <link rel="stylesheet" type="text/css" href="/css/bootstrap-fileupload.min.css" />
+ 
 <div class="wrapper wrapper1">
         <div class="row">
         <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        <a href="/admin/banner"><i class="fa fa-reply">返回</i></a>
+                        <a href="/admin/admins"><i class="fa fa-reply">返回</i></a>
                     </header>
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form"action="{{ url('admin/banner') }}"  method="post" enctype="multipart/form-data">
+                        <form class="form-horizontal"  id="infoform" role="form" action="{{ url('admin/admins') }}"  method="post" enctype="multipart/form-data">
                          {{ csrf_field() }}
                             <div class="form-group">
-                                <label for="inputEmail1" class="col-lg-2 col-sm-2 control-label">标题</label>
+                                <label for="inputEmail1" class="col-lg-2 col-sm-2 control-label">帐号</label>
                                 <div class="col-lg-10">
-                                    <input type="text" class="form-control" id="inputEmail1"  name="title" placeholder="输入标题" required>
-                                </div>
-                            </div>
- 
-                            <div class="form-group">
-                                <label for="url" class="col-lg-2 col-sm-2 control-label">跳转地址地址</label>
-                                <div class="col-lg-10">
-                                    <input type="text" class="form-control" id="url" name="url" placeholder="跳转地址,不填则点击则不跳转"  >
+                                    <input type="text" class="form-control" id="inputEmail1"  name="email" placeholder="输入帐号" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="is_show" class="col-lg-2 col-sm-2 control-label">是否显示</label>
-                                <div class="col-lg-10 slide-toggle">
-                                    <input type="checkbox" class="js-switch"  name="is_show" checked/>
+                                <label for="inputname" class="col-lg-2 col-sm-2 control-label">姓名</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="inputname"  name="name" placeholder="输入姓名" required>
                                 </div>
                             </div>
                              <div class="form-group">
-                                <label for="pic" class="col-lg-2 col-sm-2 control-label">图片</label>
+                                <label for="password1" class="col-lg-2 col-sm-2 control-label">密码</label>
+                                <div class="col-lg-10">
+                                    <input type="password" class="form-control" id="password1"  name="title" placeholder="输入密码" required>
+                                </div>
+                            </div> 
+                            <div class="form-group">
+                                <label for="password2" class="col-lg-2 col-sm-2 control-label">重复密码</label>
+                                <div class="col-lg-10">
+                                    <input type="password" class="form-control" id="password2"  name="password2" placeholder="重复密码" required>
+                                </div>
+                            </div> 
+                            <div class="form-group">
+                                <label for="select" class="col-lg-2 col-sm-2 control-label">选择权限</label>
+                                <div class="col-lg-10">
+                                    <select class="form-control" id="select" name="rtp">
+                                        <option value="1"> 超级管理员</option>
+                                        <option value="0"> 管理员</option>
+                                    </select>
+                                </div>
+                            </div>                       
+                             <div class="form-group">
+                                <label for="pic" class="col-lg-2 col-sm-2 control-label">头像</label>
                              
                                     <div class="col-md-9">
                                         <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -51,18 +66,14 @@
                                                 <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash"></i> 移除</a>
                                             </div>
                                         </div>
-                                        <br/>
-                                        <span class="label label-danger ">注意!</span>
-                                             <span>
-                                             缩略图只支持firefox,chrome,Opera,Safari,IE10
-                                             </span>
+ 
                                     </div>
                             
                             </div>
- 
+          
                             <div class="form-group">
                                 <div class="col-lg-offset-2 col-lg-10">
-                                    <button type="submit" class="btn btn-primary">新增</button>
+                                    <button type="button" class="btn btn-primary" onclick="formsubmit('infoform')">新增</button>
                                 </div>
                             </div>
                         </form>
@@ -75,4 +86,18 @@
 
 <!--file upload-->
 <script type="text/javascript" src="/js/bootstrap-fileupload.min.js"></script>
+<script type="text/javascript">
+function formsubmit(aa){
+    var p2=$("#password2").val();
+    var p1=$("#password1").val();
+    if(p1==p2)
+    {
+        $("#"+aa).submit();
+    }
+    else
+    {
+        layer.msg("密码不一致");
+    }
+}
+</script>
 @endsection('content')

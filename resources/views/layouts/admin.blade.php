@@ -18,9 +18,7 @@
 
   <!--dashboard calendar-->
   <link href="/css/clndr.css" rel="stylesheet">
-
-  <!--Morris Chart CSS -->
-  <link rel="/stylesheet" href="js/morris-chart/morris.css">
+ 
 
   <!--common-->
   <link href="/css/style.css" rel="stylesheet">
@@ -28,6 +26,7 @@
 
   <!--ios7-->
   <link rel="stylesheet" type="text/css" href="/js/ios-switch/switchery.css" />
+  <link rel="stylesheet" type="text/css" href="/css/rs.css" />
 
 
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -61,38 +60,46 @@
             <!-- visible to small devices only -->
             <div class="visible-xs hidden-sm hidden-md hidden-lg">
                 <div class="media logged-user">
-                    <img alt="" src="/images/photos/user-avatar.png" class="media-object">
+                                 <img  @if (Auth::guard('admin')->user()->pic) src="/uploads/admin/{{Auth::guard('admin')->user()->pic}}"  @else src="/images/avatar-mini.jpg"  @endif alt="" />
                     <div class="media-body">
                         <h4><a href="#">{{Auth::guard('admin')->user()->name}}</a></h4>
                         <span>"Hello There..."</span>
                     </div>
                 </div>
 
-                <h5 class="left-nav-title">Account Information</h5>
+                <h5 class="left-nav-title">账户信息</h5>
                 <ul class="nav nav-pills nav-stacked custom-nav">
-                  <li><a href="#"><i class="fa fa-user"></i> <span>Profile</span></a></li>
-                  <li><a href="#"><i class="fa fa-cog"></i> <span>Settings</span></a></li>
+                  <li><a href="/admin/info"><i class="fa fa-user"></i> <span>个人信息</span></a></li>
                   <li><a href="/admin/logout"><i class="fa fa-sign-out"></i> <span>Sign Out</span></a></li>
                 </ul>
             </div>
 
             <!--sidebar nav start-->
             <ul class="nav nav-pills nav-stacked custom-nav">
-             <li class="menu-list"><a href="#"><i class="fa fa-th-list"></i> <span>内容管理</span></a>
+             <li class="menu-list @if($group=='content') nav-active @endif"><a href="#"><i class="fa fa-th-list"></i> <span>内容管理</span></a>
                     <ul class="sub-menu-list">
-                        <li><a href="/admin/banner">全局管理</a></li>
-                        <li><a href="basic_table.html">轮播图</a></li>
-                        <li><a href="responsive_table.html">我的案例</a></li>
-                        <li><a href="dynamic_table.html">关于我们</a></li>
-                        <li><a href="editable_table.html">联系我们</a></li>
-                        <li><a href="editable_table.html">留言板</a></li>
+                        <li @if ($uri=='banner') class="active" @endif><a    href="/admin/banner">轮播图</a></li>
+                        <li @if ($uri=='article') class="active" @endif><a href="/admin/article">我的案例</a></li>
+                          <li @if ($uri=='contact') class="active" @endif><a href="/admin/contact">联系我们</a></li>
+                        <li @if ($uri=='feedback') class="active" @endif><a href="/admin/feedback">留言板</a></li>
                     </ul>
                 </li>
+             <li class="menu-list @if($group=='sys') nav-active @endif"><a href="#"><i class="fa fa-th-list"></i> <span>系统管理</span></a>
+                    <ul class="sub-menu-list">
+                        <li @if ($uri=='info') class="active" @endif><a    href="/admin/info">个人信息</a></li>
+                    </ul>
+                    @if (Auth::guard('admin')->user()->rtp==1)
+                    <ul class="sub-menu-list">
+                        <li @if ($uri=='admins') class="active" @endif><a    href="/admin/admins">系统用户管理</a></li>
+                    </ul>
+                    @endif
+                </li>
+
+
                 <li><a href="/admin/logout"><i class="fa fa-sign-in"></i> <span>退出</span></a></li>
-
             </ul>
-            <!--sidebar nav end-->
 
+            <!--sidebar nav end-->
         </div>
     </div>
     <!-- left side end-->
@@ -114,16 +121,15 @@
                 <ul class="notification-menu">
                     
                  
-                   
                     <li>
                         <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            <img src="/images/photos/user-avatar.png" alt="" />
+                            <img  @if (Auth::guard('admin')->user()->pic) src="/uploads/admin/{{Auth::guard('admin')->user()->pic}}"  @else src="/images/avatar-mini.jpg"  @endif alt="" />
+
                             {{Auth::guard('admin')->user()->name}}
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
-                            <li><a href="#"><i class="fa fa-user"></i>个人信息</a></li>
-                            <li><a href="/admin/config"><i class="fa fa-cog"></i>设置</a></li>
+                            <li><a href="/admin/info"><i class="fa fa-user"></i>个人信息</a></li>
                             <li><a href="/admin/logout"><i class="fa fa-sign-out"></i>退出</a></li>
                         </ul>
                     </li>
@@ -135,7 +141,6 @@
         </div>
         <!-- header section end-->
 
- 
  
 
         @yield('content')
@@ -185,13 +190,19 @@
 <!--common scripts for all pages-->
 <script src="/js/scripts.js"></script>
 
-<!--Dashboard Charts-->
-<script src="/js/dashboard-chart-init.js"></script>
+ 
 
 
 <!--ios7-->
 <script src="/js/ios-switch/switchery.js" ></script>
 <script src="/js/ios-switch/ios-init.js" ></script> 
  
+ <script type="text/javascript">
+function reload()
+{
+  location.reload();
+}
+
+ </script>
 </body>
 </html>

@@ -4,15 +4,16 @@
 
 <!--file upload-->
 <link rel="stylesheet" type="text/css" href="/css/bootstrap-fileupload.min.css" />
+ 
 <div class="wrapper wrapper1">
         <div class="row">
         <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        <a href="/admin/banner"><i class="fa fa-reply">返回</i></a>
+                        <a href="/admin/article"><i class="fa fa-reply">返回</i></a>
                     </header>
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form"action="{{ url('admin/banner') }}"  method="post" enctype="multipart/form-data">
+                        <form class="form-horizontal" role="form"action="{{ url('admin/article') }}"  method="post" enctype="multipart/form-data">
                          {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="inputEmail1" class="col-lg-2 col-sm-2 control-label">标题</label>
@@ -21,18 +22,7 @@
                                 </div>
                             </div>
  
-                            <div class="form-group">
-                                <label for="url" class="col-lg-2 col-sm-2 control-label">跳转地址地址</label>
-                                <div class="col-lg-10">
-                                    <input type="text" class="form-control" id="url" name="url" placeholder="跳转地址,不填则点击则不跳转"  >
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="is_show" class="col-lg-2 col-sm-2 control-label">是否显示</label>
-                                <div class="col-lg-10 slide-toggle">
-                                    <input type="checkbox" class="js-switch"  name="is_show" checked/>
-                                </div>
-                            </div>
+  
                              <div class="form-group">
                                 <label for="pic" class="col-lg-2 col-sm-2 control-label">图片</label>
                              
@@ -51,15 +41,16 @@
                                                 <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash"></i> 移除</a>
                                             </div>
                                         </div>
-                                        <br/>
-                                        <span class="label label-danger ">注意!</span>
-                                             <span>
-                                             缩略图只支持firefox,chrome,Opera,Safari,IE10
-                                             </span>
+ 
                                     </div>
                             
                             </div>
- 
+                         <div class="form-group">
+                                <label for="pic" class="col-lg-2 col-sm-2 control-label">内容</label>
+                                        <div class="col-sm-9">
+                                            <textarea class="form-control ckeditor" name="content" rows="6"></textarea>
+                                        </div>
+                                    </div>
                             <div class="form-group">
                                 <div class="col-lg-offset-2 col-lg-10">
                                     <button type="submit" class="btn btn-primary">新增</button>
@@ -75,4 +66,6 @@
 
 <!--file upload-->
 <script type="text/javascript" src="/js/bootstrap-fileupload.min.js"></script>
+<script type="text/javascript" src="/js/ckeditor/ckeditor.js"></script>
+
 @endsection('content')
