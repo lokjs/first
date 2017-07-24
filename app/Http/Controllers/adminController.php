@@ -51,9 +51,19 @@ class adminController extends Controller
       return redirect('admin');      
     }
 
-    public function edit(){
-       $user =  Auth::guard('admin')->user();
-        return view('admin.info',['group'=>'sys','uri'=>'info','user'=>$user]);
+    public function edit($id=null){
+        $users=Auth::guard('admin')->user();
+        if($id&&($users->rtp==1))
+        {
+            $userobj=admin::where('id',$id)->where('del','0')->first();
+            return view('/admin.admins_edit',['group'=>'sys','uri'=>'admins','row'=>$userobj,'title'=>'']);
+        }
+        else
+        {
+           $user =  Auth::guard('admin')->user();
+            return view('admin.info',['group'=>'sys','uri'=>'info','user'=>$user]);
+        }
+ 
     }
     public function adminlist(){
         $user=Auth::guard('admin')->user();
@@ -64,7 +74,7 @@ class adminController extends Controller
         }
         else
         {
-            return view('/admin',['group'=>'sys','uri'=>'admins','title'=>'']);
+           return view('/admin',['group'=>'sys','uri'=>'info','title'=>'']);
         }
     }
     public function create(){
@@ -75,7 +85,7 @@ class adminController extends Controller
         }
         else
         {
-             return view('/admin',['group'=>'sys','uri'=>'admins','title'=>'']);
+            return view('/admin',['group'=>'sys','uri'=>'info','title'=>'']);
         }
     }
     public function store(Request $request){
@@ -94,37 +104,80 @@ class adminController extends Controller
             }
             $admin->rtp=$request->get('rtp');
             if($admin->save()){
-            return redirect('/admin');
+            return redirect('/admin/admins');
             }else{
                 return redirect()->back()->withInput()->withErrors('保存失败！'); 
             }         
         }
         else
         {
-            return view();
+           return view('/admin',['group'=>'sys','uri'=>'info','title'=>'']);
         }
     }
-    public function destroy(Request $request){
+    public function destroy(Request $request,$id){
+
         $user=Auth::guard('admin')->user();
         if($user->rtp==1)
         {
-            $userobj=admin::where('id',$request->get('id'));
+            $userobj=admin::where('id',$id)->first();
             $userobj->del=1;
             if($userobj->save())
             {
-               adminlist();
+    return redirect('/admin/admins');
             }
             else
             {
-                return view('view');
+                return view('/admin',['group'=>'sys','uri'=>'info','title'=>'']);
             }
         }
+    }
+    public function search(Request $request){
+        $user=Auth::guard('admin')->user();
+        if($user->rtp==1)
+        {
+            $users=admin::where('name','like','%'.$request->get('title').'%')->where('del','0')->paginate(10);
+            return view('/admin.admins',['group'=>'sys','row'=>$users,'uri'=>'admins','title'=>$request->get('title')]);
+        }
+        else
+        {
+             return view('/admin',['group'=>'sys','uri'=>'info','title'=>'']);
+        }
+    }
+    public function show(Request $request,$id){
+        $user=Auth::guard('admin')->user();
+        if($user->rtp==1)
+        {
+            $userobj=admin::where('id',$id)->where('del','0')->first();
+            return view('/admin.admins_show',['group'=>'sys','row'=>$userobj,'uri'=>'admins']);
+        }
+        else
+        {
+             return view('/admin',['group'=>'sys','uri'=>'info','title'=>'']);
+        }
+
     }
     public function update(Request $request,$id=null){
         $user=Auth::guard('admin')->user();
         if($user->rtp==1&&$id!=null)
         {
-
+            $userobj=admin::where('id',$id)->where('del','0')->first();
+            $userobj->name=$request->get('name');
+            $userobj->email=$request->get('email');
+            if($request->get('password'))
+            {
+                $userobj->password=bcrypt($request->get('password'));
+            }
+            $this->manager->setFolderName('uploads/admin');
+            $upload = $this->manager->uploadImage($request,'pic');
+            if($upload['error']==null)
+            {
+            $userobj->pic=$upload['filename'];
+            }
+             if($userobj->save()){
+            return redirect('/admin/admins');
+            }else{
+                return redirect()->back()->withInput()->withErrors('保存失败！'); 
+            }
         }
         else
         {

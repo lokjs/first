@@ -41,13 +41,15 @@ Route::resource('/admin/feedback','admin\feedbackController',['only' => ['index'
 Route::get('/admin/info','adminController@edit');
 Route::post('/admin/info','adminController@update');
 
-Route::get('/admin/admins','adminController@adminlist');
+Route::get('/admin/admins/','adminController@adminlist');
 Route::get('/admin/admins/create','adminController@create');
 Route::get('/admin/admins/search','adminController@search');
 Route::post('/admin/admins/search','adminController@search');
 Route::post('/admin/admins','adminController@store');
 Route::PUT('/admin/admins','adminController@update');
-
-
+Route::DELETE('/admin/admins/{id}','adminController@destroy');
+Route::get('/admin/admins/{id}','adminController@show');
+Route::get('/admin/admins/{id}/edit','adminController@edit');
+Route::post('/admin/admins/{id}','adminController@update');
 
 Route::get('/home', 'HomeController@index');

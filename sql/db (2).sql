@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2017-07-23 16:41:40
+-- Generation Time: 2017-07-24 17:09:39
 -- 服务器版本： 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admins` (
-  `id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) UNSIGNED NOT NULL,
   `del` int(11) NOT NULL DEFAULT '0',
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -45,9 +45,12 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `del`, `email`, `password`, `name`, `pic`, `rtp`, `remember_token`, `ip`, `created_at`, `updated_at`) VALUES
-(1, 0, 'admin@qq.com', '$2y$10$IEdHdAywGo50b5.K7lxS9enXwVl4yy0GTlUdZ74zadc5EnXqlx7ii', '超级管理员', '23a1827d6090717bd3d4608da108bd745.png', 1, 'tffbQlM85Grjn6t4f2CbQ46shzRFd8gP9ffVPVIOkeYW95v4owIEuGwqZxf0', '::1', '2017-07-08 23:08:35', '2017-07-23 05:35:54'),
-(2, 0, 'ray', '$2y$10$yoqcpaenXiPq7uk.ruZX8.Cg1fWUBPU7XRe7dYBN1onfvwcjD7luC', '帅哥人', 'd6074d2a67a1ef925f82929fb5c583a05.jpg', 0, 'KQl79bAWRWpoZEo1WG0fwKOuoCax9Uso0SGotcUujdPaPkQTuBhpCHhR673u', '::1', '2017-07-08 23:09:48', '2017-07-23 00:13:44'),
-(3, 0, '123', '$2y$10$MhkD7hTNNuKphAuqo1W6.u50pWLFBlht83VTltkAtJJzHY483UYnu', 'kk', 'f1a804298435ce4f783e6f047bc722a95.jpg', 0, NULL, NULL, '2017-07-23 06:28:14', '2017-07-23 06:28:14');
+(1, 0, 'admin', '$2y$10$IEdHdAywGo50b5.K7lxS9enXwVl4yy0GTlUdZ74zadc5EnXqlx7ii', 'admin', '116da3f4932fa0984e91285bc08ed1785.jpg', 1, 'tffbQlM85Grjn6t4f2CbQ46shzRFd8gP9ffVPVIOkeYW95v4owIEuGwqZxf0', '::1', '2017-07-08 23:08:35', '2017-07-24 07:09:04'),
+(2, 1, 'ray', '$2y$10$yoqcpaenXiPq7uk.ruZX8.Cg1fWUBPU7XRe7dYBN1onfvwcjD7luC', '帅哥人', 'd6074d2a67a1ef925f82929fb5c583a05.jpg', 0, 'KQl79bAWRWpoZEo1WG0fwKOuoCax9Uso0SGotcUujdPaPkQTuBhpCHhR673u', '::1', '2017-07-08 23:09:48', '2017-07-24 06:42:40'),
+(3, 0, '123', '$2y$10$MhkD7hTNNuKphAuqo1W6.u50pWLFBlht83VTltkAtJJzHY483UYnu', 'kk', 'f1a804298435ce4f783e6f047bc722a95.jpg', 0, NULL, NULL, '2017-07-23 06:28:14', '2017-07-23 06:28:14'),
+(4, 1, 'test', '$2y$10$crY/boMeWWwImxAFrL/XFeHA8033446UNm7BCV4dSo7rowwNTewD6', 't', '258411faf222ed612dcaabef10cbf8b75.jpg', 1, NULL, NULL, '2017-07-24 05:30:37', '2017-07-24 06:40:05'),
+(5, 0, '444', '$2y$10$r.HHY4jEi8Ta80nPzppPnOSHOLrsrEvLhydh/t8ceTTelp0Nh2qZm', '444', '2de67e264ac343d594ed694f447dcd8a5.jpg', 1, NULL, NULL, '2017-07-24 05:36:51', '2017-07-24 05:36:51'),
+(6, 1, 'try', '$2y$10$SUe/4fJvRuEtrl4xtoOhLecRk/OK/pkT4qMucBPr3gkTyRXDwYI6G', 'try', '0dd6388f2df36bbc0ac1eabeb5e370955.jpg', 1, NULL, NULL, '2017-07-24 05:37:40', '2017-07-24 06:40:44');
 
 -- --------------------------------------------------------
 
@@ -216,7 +219,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `creat
 -- Indexes for table `admins`
 --
 ALTER TABLE `admins`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id` (`id`);
 
 --
 -- Indexes for table `articles`
@@ -258,6 +262,11 @@ ALTER TABLE `users`
 -- 在导出的表使用AUTO_INCREMENT
 --
 
+--
+-- 使用表AUTO_INCREMENT `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- 使用表AUTO_INCREMENT `articles`
 --
