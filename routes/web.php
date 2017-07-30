@@ -11,9 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'webController@index');
+Route::get('/about', 'webController@about');
+Route::get('/server', 'webController@server');
+Route::get('/object', 'webController@object');
+Route::get('/news', 'webController@news');
+Route::get('/lxwm', 'webController@lxwm');
+
+
 
 Auth::routes();
 
@@ -34,6 +39,10 @@ Route::resource('/admin/article','admin\articleController');
 
 
 Route::resource('/admin/contact','admin\contactController',['only' => ['index', 'show','edit','update']]);
+Route::resource('/admin/webconfig','admin\webconfigController',['only' => ['index', 'show','edit','update']]);
+
+
+
 Route::get('/admin/feedback/search','admin\feedbackController@search');
 Route::post('/admin/feedback/search','admin\feedbackController@search');
 Route::resource('/admin/feedback','admin\feedbackController',['only' => ['index', 'show','edit','update']]);
@@ -51,5 +60,12 @@ Route::DELETE('/admin/admins/{id}','adminController@destroy');
 Route::get('/admin/admins/{id}','adminController@show');
 Route::get('/admin/admins/{id}/edit','adminController@edit');
 Route::post('/admin/admins/{id}','adminController@update');
+
+
+
+
+
+
+
 
 Route::get('/home', 'HomeController@index');

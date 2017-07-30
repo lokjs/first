@@ -87,6 +87,9 @@
              <li class="menu-list @if($group=='sys') nav-active @endif"><a href="#"><i class="fa fa-th-list"></i> <span>系统管理</span></a>
                     <ul class="sub-menu-list">
                         <li @if ($uri=='info') class="active" @endif><a    href="/admin/info">个人信息</a></li>
+                    </ul>                    
+                    <ul class="sub-menu-list">
+                        <li @if ($uri=='webconfig') class="active" @endif><a    href="/admin/webconfig">网站配置</a></li>
                     </ul>
                     @if (Auth::guard('admin')->user()->rtp==1)
                     <ul class="sub-menu-list">
