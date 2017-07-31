@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\webconfig;
+use App\banner;
 
 
 class webController extends Controller
@@ -19,7 +20,8 @@ class webController extends Controller
 
     }
     public function index(){
-        return view('index',['config'=>$this->config,'link'=>'index']);
+        $banner=banner::where('del',0)->Orderby('id','desc')->paginate(3);
+        return view('index',['config'=>$this->config,'link'=>'index','banner'=>$banner]);
     }
 
     public function about(){
@@ -34,6 +36,10 @@ class webController extends Controller
     public function news(){
         return view('news',['config'=>$this->config,'link'=>'news']);
     }
+    public function lxwm(){
+        return view('lxwm',['config'=>$this->config,'link'=>'lxwm']);
+    }
+ 
  
 
 }

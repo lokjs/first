@@ -1,4 +1,5 @@
   @extends('layouts.web')
+  @section('content')	
 		<section class="container wrap clearfix">
 				<div class="title1 wow slideInLeft">
 	    			<h1>CONTACT US</h1>

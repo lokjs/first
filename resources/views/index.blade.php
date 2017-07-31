@@ -1,11 +1,10 @@
 @extends('layouts.web')
-
 @section('content')
 		<section class="swiper-container wow fadeInDown" id="t-ban">
 	        <div class="swiper-wrapper">
-	            <div class="swiper-slide"><img src="img/ban1.jpg"/></div>
-	            <div class="swiper-slide"><img src="img/ban2.jpg"/></div>
-				<div class="swiper-slide"><img src="img/ban1.jpg"/></div>
+	        @foreach($banner as $value)
+	            <div class="swiper-slide"><a href="{{$value->url}}"><img src="uploads/banner/{{$value->pic}}" height="430" /></a></div>
+	           @endforeach
 	        </div>
 	   		 <!-- Add Pagination -->
 	   		 <div class="swiper-pagination"></div>
