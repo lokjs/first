@@ -13,10 +13,13 @@
 
 Route::get('/', 'webController@index');
 Route::get('/about', 'webController@about');
+Route::get('/lxwm', 'webController@lxwm');
+Route::get('/feedback', 'webController@feedback');
+
+
 Route::get('/server', 'webController@server');
 Route::get('/object', 'webController@object');
 Route::get('/news', 'webController@news');
-Route::get('/lxwm', 'webController@lxwm');
 
 
 

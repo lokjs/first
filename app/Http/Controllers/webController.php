@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\webconfig;
 use App\banner;
+use App\contact;
 
 
 class webController extends Controller
@@ -25,8 +26,10 @@ class webController extends Controller
     }
 
     public function about(){
-        return view('about',['config'=>$this->config,'link'=>'about']);
+        $about=contact::where('del',0)->Orderby('id','desc')->first();
+        return view('about',['config'=>$this->config,'link'=>'about','about'=>$about]);
     }
+
     public function server(){
         return view('server',['config'=>$this->config,'link'=>'server']);
     }
@@ -37,7 +40,11 @@ class webController extends Controller
         return view('news',['config'=>$this->config,'link'=>'news']);
     }
     public function lxwm(){
-        return view('lxwm',['config'=>$this->config,'link'=>'lxwm']);
+        $about=contact::where('del',0)->Orderby('id','desc')->first();
+        return view('lxwm',['config'=>$this->config,'link'=>'about','about'=>$about]);
+    }
+    public function feedback(){
+        return view('feedback',['config'=>$this->config,'link'=>'about']);
     }
  
  

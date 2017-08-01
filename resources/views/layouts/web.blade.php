@@ -7,14 +7,14 @@
     <title>{{$config->title}}</title>
     <meta name="keywords" content="{{$config->keywords}}">
 	<meta name="description" content="{{$config->description}}">    	
-    <link rel="stylesheet" type="text/css" href="css/animate.min.css"/>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/swiper.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/basis.css"/>
-    <script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
-    <script src="js/respond.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/jquery.sidr.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/animate.min.css"/>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/swiper.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/basis.css"/>
+    <script src="/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/respond.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/js/jquery.sidr.min.js"></script>
 	<script>
 		$(function(){
 		   $('#left-menu').sidr({
@@ -33,11 +33,11 @@
 		<header id="header">
 			<section class="clearfix container nav-box">
 				<div class="fl wow fadeInLeft logo">
-					<a href="#"><img src="img/logo.png"/></a>
+					<a href="#"><img src="/img/logo.png"/></a>
 				</div>
 				<nav class="fr ">
 					<div class="nav-logo hidden-lg hidden-sm hidden-md" id="left-menu">
-						<img src="img/nav.png"/>
+						<img src="/img/nav.png"/>
 					</div>
 					<ul class="hidden-xs d-nav clearfix wow fadeInRight">
 						<li @if ($link=='index') class="dq" @endif><a href="/">网站首页</a></li>
@@ -67,7 +67,7 @@
 		   <div class="container foot-top">
 		   		<div class="fl foot-lx wow bounceInLeft  hidden-xs">
 		   			<div class="fl foot-rwm hidden-sm">
-		   				<img src="img/rwm.png"/>
+		   				<img src="/img/rwm.png"/>
 		   			</div>
 		   			<div class="fl foot-ltxt">
 					<h3>我们的联系方式</h3>

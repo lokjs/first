@@ -11,17 +11,16 @@
 	    		</div>
 	    		    		<div class="sub-nav clearfix wow fadeInUp">
     			<ul class="clearfix">
-    				<li class="dq"><a href="/about">公司简介</a></li>
-    				<li><a href="/feedback">在线留言</a></li>
+    				<li  ><a href="/about">公司简介</a></li>
+    				<li class="dq"><a href="/feedback">在线留言</a></li>
     				<li><a href="/lxwm">联系我们</a></li>
     			</ul>
     			<div class="fr wz-box">
-    				<a href="/">网站首页</a> > <a href="/about">关于我们</a> > <a href="#">公司简介</a>
+    				<a href="/">网站首页</a> > <a href="/about">关于我们</a> > <a href="#">在线留言</a>
     			</div>
     		</div>
 
 	    		<div class="about-txt wow bounceInUp">
-	    			{!! $about->content !!} 
 	    		</div>
 		</section>
 	   	    <script src="js/wow.js" type="text/javascript" charset="utf-8"></script>
