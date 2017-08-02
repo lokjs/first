@@ -64,6 +64,7 @@ Route::get('/admin/admins/{id}','adminController@show');
 Route::get('/admin/admins/{id}/edit','adminController@edit');
 Route::post('/admin/admins/{id}','adminController@update');
 
+// Route::get('/admin/ckedituploads','admin\ckeditController@upload');
 
 
 

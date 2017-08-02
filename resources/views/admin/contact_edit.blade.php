@@ -23,34 +23,22 @@
                                 </div>
                             </div>
  
-                             <div class="form-group">
-                                <label for="pic" class="col-lg-2 col-sm-2 control-label">图片</label>
-                             
-                                    <div class="col-md-9">
-                                        <div class="fileupload fileupload-new" data-provides="fileupload">
-                                            <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                                                <img src="/uploads/contact/{{$row->pic}} " alt="" />
-                                            </div>
-                                            <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                                            <div>
-                                                   <span class="btn btn-default btn-file">
-                                                   <span class="fileupload-new"><i class="fa fa-paper-clip"></i> 选择图片</span>
-                                                   <span class="fileupload-exists"><i class="fa fa-undo"></i> 更换</span>
-                                                   <input type="file" name="pic" class="default" value="{{$row->pic}}" />
-                                                   </span>
-                                                <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash"></i> 移除</a>
-                                            </div>
-                                        </div>
-                                        <br/>
-                                    </div>
-                            
-                            </div>
+ 
                          <div class="form-group">
                                 <label for="pic" class="col-lg-2 col-sm-2 control-label">内容</label>
                                         <div class="col-sm-9">
                                             <textarea class="form-control ckeditor" name="content" rows="6" >{{$row->content}}</textarea>
                                         </div>
                                     </div>
+
+                                                                 <div class="form-group">
+                                <label for="pic" class="col-lg-2 col-sm-2 control-label">定位信息</label>
+                             
+                                    <div class="col-md-9">
+                                 <textarea class="form-control ckeditor" name="lxwm" rows="6" >{{$row->lxwm}}</textarea>
+                                    </div>
+                            
+                            </div>
                                                              <div class="form-group">
                                 <label for="pic" class="col-lg-2 col-sm-2 control-label">坐标选取</label>
                                         <div class="col-sm-9">

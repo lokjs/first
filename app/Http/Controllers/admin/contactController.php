@@ -41,17 +41,12 @@ class contactController extends Controller
      public function update(Request $request,$id)
     {
 
-        $this->manager->setFolderName('uploads/contact');
-        $upload = $this->manager->uploadImage($request,'pic');
         $contact=contact::where('id',$id)->where('del',0)->first();
         $contact->title=$request->get('title');
         $contact->content=$request->get('content');
         $contact->x=$request->get('x');
         $contact->y=$request->get('y');
-        if($upload['error']==null)
-        {
-        $contact->pic=$upload['filename'];
-        }
+        $contact->lxwm=$request->get('lxwm');
         $contact->update_author=Auth::guard('admin')->id();
         if($contact->save()){
             return redirect('/admin/contact');
