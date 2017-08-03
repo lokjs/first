@@ -11,6 +11,7 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/swiper.min.css"/>
     <link rel="stylesheet" type="text/css" href="/css/basis.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/rs.css"/>
     <script src="/js/jquery.js" type="text/javascript" charset="utf-8"></script>
     <script src="/js/respond.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>

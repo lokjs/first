@@ -35,7 +35,7 @@
                                 <label for="pic" class="col-lg-2 col-sm-2 control-label">定位信息</label>
                              
                                     <div class="col-md-9">
-                                 <textarea class="form-control ckeditor" name="lxwm" rows="6" >{{$row->lxwm}}</textarea>
+                                 <textarea class="form-control  "  id="ckeditor1" name="lxwm" rows="6" >{{$row->lxwm}}</textarea>
                                     </div>
                             
                             </div>
@@ -89,5 +89,7 @@
         $("#bm_x").val(e.point.lng);
         layer.msg("获取坐标点x:"+e.point.lng+"y:"+e.point.lat+"成功");
     });
+
+        CKEDITOR.replace('ckeditor1');
 </script>
 @endsection('content')

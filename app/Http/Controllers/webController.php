@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\webconfig;
 use App\banner;
 use App\contact;
+use App\feedback;
 
 
 class webController extends Controller
@@ -46,7 +47,19 @@ class webController extends Controller
     public function feedback(){
         return view('feedback',['config'=>$this->config,'link'=>'about']);
     }
- 
+    public function feedbackupdate(Request $request){
+        $feedback=new feedback;
+        $feedback->name=$request->get('name');
+        $feedback->phone=$request->get('phone');
+        $feedback->title=$request->get('title');
+        $feedback->content=$request->get('content');
+        if($feedback->save())
+        {
+            return redirect('/feedback');
+        }else{
+            return redirect()->back()->withInput()->withErrors('保存失败！'); 
+        }
+    }
  
 
 }

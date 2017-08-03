@@ -46,7 +46,8 @@ class contactController extends Controller
         $contact->content=$request->get('content');
         $contact->x=$request->get('x');
         $contact->y=$request->get('y');
-        $contact->lxwm=$request->get('lxwm');
+        $contact->lxwm=preg_replace('/\s+/','',$request->get('lxwm'));
+
         $contact->update_author=Auth::guard('admin')->id();
         if($contact->save()){
             return redirect('/admin/contact');

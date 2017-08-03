@@ -12,7 +12,7 @@
 	    		    		<div class="sub-nav clearfix wow fadeInUp">
     			<ul class="clearfix">
     				<li ><a href="/about">公司简介</a></li>
-    				<li><a href="#">在线留言</a></li>
+    				<li><a href="/feedback">在线留言</a></li>
     				<li class="dq"><a href="/lxwm">联系我们</a></li>
     			</ul>
     			<div class="fr wz-box">
@@ -75,7 +75,7 @@
     }
     
     //标注点数组
-    var markerArr = [{title:"瑞德公司",content:"手机号码：13138866366<br/>联系邮箱：13138866366@163.com<br/>联系电话：400-8382812<br/>联系地址：深圳市光明新区公明街道民生路82号铭源商务大厦3楼",point:"113.908767|22.790531",isOpen:1,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
+    var markerArr = [{title:"{{$about->title}}",content:"{!!$about->lxwm!!}",point:"{{$about->x}}|{{$about->y}}",isOpen:1,icon:{w:1,h:1,l:0,t:0,x:6,lb:5}}
 		 ];
     //创建marker
     function addMarker(){

@@ -12,12 +12,6 @@
                     <div class="panel-body">
                         <form class="form-horizontal" role="form"   >
                          {{ csrf_field() }}
-                            <div class="form-group">
-                                <label  class="col-lg-2 col-sm-2 control-label">标题</label>
-                                <label class="col-lg-10 pt7">
-                                    {{ $row->title }}
-                                </label>
-                            </div>
  
                             <div class="form-group">
                                 <label for="pic" class="col-lg-2 col-sm-2 control-label">公司简介</label>
@@ -27,13 +21,6 @@
                                        {!!$row->content!!} 
                                     </div>
                             </div>
-                            <div class="form-group">
-                                <label for="pic" class="col-lg-2 col-sm-2 control-label">定位信息</label>
-                                    <div class="col-md-9 pt7">
-                                     {!! $row->lxwm!!} 
-                                    </div>
-                            </div>
-
                             <div class="form-group">
                                 <label for="pic" class="col-lg-2 col-sm-2 control-label">定位</label>
                              
@@ -91,7 +78,7 @@
     }
     
     //标注点数组
-    var markerArr = [{title:"{{$row->title}}",content:"{{$row->lxwm}}",point:"{{$row->x}}|{{$row->y}}",isOpen:1,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
+    var markerArr = [{title:"{{$row->title}}",content:"{!!$row->lxwm!!}",point:"{{$row->x}}|{{$row->y}}",isOpen:1,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
          ];
     //创建marker
     function addMarker(){

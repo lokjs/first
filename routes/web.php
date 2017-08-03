@@ -15,6 +15,7 @@ Route::get('/', 'webController@index');
 Route::get('/about', 'webController@about');
 Route::get('/lxwm', 'webController@lxwm');
 Route::get('/feedback', 'webController@feedback');
+Route::post('/feedback', 'webController@feedbackupdate');
 
 
 Route::get('/server', 'webController@server');
