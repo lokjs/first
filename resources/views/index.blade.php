@@ -67,9 +67,9 @@
 	    			<a href="#"><img src="img/about.jpg" /></a>
 	    		</div>
 	    		<div class="fr sy-abtxt wow bounceInRight">
-	    			<h2>关于XXXXXXXX企业服务有限公司</h2>
-	    			<p>佰腾科技现有员工112人，具备中高级职称的18人，本科以上学历占总人数的90%以上，人员涵盖知识产权、法律，具备中高级职称的18人，本科以上学历占总人数的90%以上，人员涵盖知识产权、法律、机械、电子、化工等多个领域，主要骨干人员都有5年以上知识产权服务的工作经验。</p>
-	    			<a href="#" class="sy-gdbtn">查看详情</a>
+	    			<h2>关于{{$about->title}}</h2>
+	    			<p>{{str_limit(strip_tags($about->content), $limit = 250, $end = '...')}}</p>
+	    			<a href="/about" class="sy-gdbtn">查看详情</a>
 	    		</div>
 	    	</div>
 	    	<div class="sy-tgff">
@@ -164,30 +164,15 @@
 	    			<div class="news-img fl wow bounceInRight">
 	    				    <div class="swiper-container" id="news-imgfoc">
 						        <div class="swiper-wrapper">
+						        @foreach($article_pic as $value)
 						            <div class="swiper-slide">
-										<img src="img/nimg.jpg"/>
-										<p><span>111商标申请以及和驰名商标的区别</span></p>
+						            <a href="/new/{{$value->id}}">
+										<img src="/uploads/article/{{$value->pic}}" height="312" />
+										<p><span>{{$value->title}}</span></p>
+										</a>
 						            </div>
-						            <div class="swiper-slide">
-										<img src="img/nimg.jpg"/>
-										<p><span>2222标申请以及和驰名商标的区别</span></p>
-						            </div>
-						            <div class="swiper-slide">
-										<img src="img/nimg.jpg"/>
-										<p><span>著名商标申请3333和驰名商标的区别</span></p>
-						            </div>
-						            <div class="swiper-slide">
-										<img src="img/nimg.jpg"/>
-										<p><span>著名商标申请以4444驰名商标的区别</span></p>
-						            </div>
-						            <div class="swiper-slide">
-										<img src="img/nimg.jpg"/>
-										<p><span>著名商标申请以及5555名商标的区别</span></p>
-						            </div>
-						            <div class="swiper-slide">
-										<img src="img/nimg.jpg"/>
-										<p><span>著名商标申请以及和6666标的区别</span></p>
-						            </div>
+						        @endforeach    
+			 
 						        </div>
 						        <div class="swiper-button-next"></div>
 						        <div class="swiper-button-prev"></div>
@@ -195,21 +180,13 @@
 	    			</div>
 	    			<div class="synews-list fl wow bounceInLeft">
 	    				<ul>
+	    				@foreach($articles as $key=>$value)
 	    					<li>
-	    						<span>01</span>
-	    						<a href="#">外国(地区)企业常驻代表机构变更机构名称应提交什么材料？</a>
-	    						<p>从今年1月下旬开始，住建部联合国土部、发改委等九部委地方政府进行督察，从</p>	    						
+	    						<span>0{{$key+1 }}</span>
+	    						 <a href="/new/{{$value->id}}">{{$value->title}}</a>
+	    						<p>{{str_limit(strip_tags($value->content), $limit = 100, $end = '...')}}</p>
 	    					</li>
-	    					<li>
-	    						<span>02</span>
-	    						<a href="#">外国(地区)企业常驻代表机构变更机构名称应提交什么材料？</a>
-	    						<p>从今年1月下旬开始，住建部联合国土部、发改委等九部委地方政府进行督察，从</p>	    						
-	    					</li>
-	    					<li>
-	    						<span>03</span>
-	    						<a href="#">外国(地区)企业常驻代表机构变更机构名称应提交什么材料？</a>
-	    						<p>从今年1月下旬开始，住建部联合国土部、发改委等九部委地方政府进行督察，从</p>	    						
-	    					</li>
+	    					@endforeach
 	    				</ul>
 	    			</div>
 	    		</div>
@@ -226,18 +203,9 @@
 		        <div class="swiper-button-prev"></div>
 			    <div class="swiper-container" id="hb-img">
 			        <div class="swiper-wrapper">
-			            <div class="swiper-slide"><img src="img/link.jpg"/></div>
-			            <div class="swiper-slide"><img src="img/link.jpg"/></div>
-			            <div class="swiper-slide"><img src="img/link.jpg"/></div>
-			            <div class="swiper-slide"><img src="img/link.jpg"/></div>
-			            <div class="swiper-slide"><img src="img/link.jpg"/></div>
-			            <div class="swiper-slide"><img src="img/link.jpg"/></div>
-			            <div class="swiper-slide"><img src="img/link.jpg"/></div>
-			            <div class="swiper-slide"><img src="img/link.jpg"/></div>
-			            <div class="swiper-slide"><img src="img/link.jpg"/></div>
-			            <div class="swiper-slide"><img src="img/link.jpg"/></div>
-			            <div class="swiper-slide"><img src="img/link.jpg"/></div>
-			            <div class="swiper-slide"><img src="img/link.jpg"/></div>
+			        @foreach($partners as $value)
+			            <div class="swiper-slide"><a href="{{$value->url}}" title="{{$value->title}}"><img src="/uploads/partner/{{$value->pic}}"/></a></div>
+			       @endforeach 
 			        </div>
 			    </div>
 	    	</div>	    	

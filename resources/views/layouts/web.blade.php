@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="/css/basis.css"/>
     <link rel="stylesheet" type="text/css" href="/css/rs.css"/>
     <script src="/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/layer/layer.js" type="text/javascript" charset="utf-8"></script>
     <script src="/js/respond.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="/js/jquery.sidr.min.js"></script>
@@ -34,7 +35,7 @@
 		<header id="header">
 			<section class="clearfix container nav-box">
 				<div class="fl wow fadeInLeft logo">
-					<a href="#"><img src="/img/logo.png"/></a>
+					<a href="/"><img src="/img/logo.png"/></a>
 				</div>
 				<nav class="fr ">
 					<div class="nav-logo hidden-lg hidden-sm hidden-md" id="left-menu">
@@ -43,10 +44,8 @@
 					<ul class="hidden-xs d-nav clearfix wow fadeInRight">
 						<li @if ($link=='index') class="dq" @endif><a href="/">网站首页</a></li>
 						<li @if ($link=='about') class="dq" @endif><a href="/about">关于我们</a></li>
-						<li @if ($link=='object') class="dq" @endif><a href="/object">服务项目</a></li>
 						<li @if ($link=='news') class="dq" @endif><a href="/news">新闻中心</a></li>
-						<li @if ($link=='server') class="dq" @endif><a href="/server">服务流程</a></li>
-						<li @if ($link=='lxwm') class="dq" @endif><a href="/lxwm">联系我们</a></li>
+						<li @if ($link=='user') class="dq" @endif><a href="/login">登录</a></li>
 					</ul>
 					<div class="clearfix xs-nav" id="sidr-left">
 						<ul>
@@ -75,21 +74,29 @@
 					<h4>400-0000-000</h4>
 					<p>地址：北京市海淀区蓟门桥西土城路6号（100088）</p>
 					<div class="clearfix foot-ico">
-						<a href="#" class="icon-em">XXXXXXXX@163.com</a>
-						<a href="#" class="icon-qq">在线咨询客服</a>
+						<a   class="icon-em">XXXXXXXX@163.com</a>
+						<a   class="icon-qq">在线咨询客服</a>
 					</div>
 		   			</div>
 
 		   		</div>
 		   		<div class="fr foot-rbox wow bounceInRight">
 		   			<div class="foot-nav">
-		   				<a href="about.html">关于我们</a> |   
-		   				<a href="ffxm.html">服务项目</a> |    
-		   				<a href="news.html">新闻中心</a> |    
-		   				<a href="fflc.html">服务流程</a> |    
-		   				<a href="about.html">联系我们</a>
+		   				<a href="/">首页</a> |   
+		   				<a href="/about">关于我们</a> |   
+		   				<a href="/news">新闻中心</a> |    
+		   				<a href="/login">登录</a> |
+		   				<a href="/register">注册</a> 
+
 		   			</div>
+ 		   			<div class="foot-sobox">
+ 		   			<form action="/search" method="post">
+ 		   			{{ csrf_field() }}
+		   				<input type="text"  value="" name="title" />
+		   				<button type="submit">搜索</button>
+ 		   			</form>
  
+		   			</div>
 		   		</div>
 		   </div>
 		   

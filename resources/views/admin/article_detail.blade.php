@@ -21,8 +21,22 @@
                                     <input type="text" class="form-control" id="inputEmail1"  name="title" placeholder="输入标题" required>
                                 </div>
                             </div>
- 
-  
+                             <div class="form-group">
+                                <label for="type" class="col-lg-2 col-sm-2 control-label">类型</label>
+                                <div class="col-lg-10">
+                                    <select class="form-control"  id="type" name="type">
+                                        <option value="1">公司新闻</option>    
+                                        <option value="2">行业动态</option>    
+                                        <option value="3">政策法规</option>    
+                                    </select>
+                                </div>
+                           </div>
+                              <div class="form-group">
+                                <label for="inputEmail1" class="col-lg-2 col-sm-2 control-label">作者</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="inputEmail1"  name="author" placeholder="输入作者" required>
+                                </div>
+                            </div>  
                              <div class="form-group">
                                 <label for="pic" class="col-lg-2 col-sm-2 control-label">图片</label>
                              

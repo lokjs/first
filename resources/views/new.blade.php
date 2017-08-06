@@ -1,36 +1,8 @@
  @extends('layouts.web')
 @section('content')			
-			<section class="clearfix container nav-box">
-				<div class="fl wow fadeInLeft logo">
-					<a href="#"><img src="img/logo.png"/></a>
-				</div>
-				<nav class="fr ">
-					<div class="nav-logo hidden-lg hidden-sm hidden-md" id="left-menu">
-						<img src="img/nav.png"/>
-					</div>
-					<ul class="hidden-xs d-nav clearfix wow fadeInRight">
-						<li class="dq"><a href="index.html">网站首页</a></li>
-						<li><a href="about.html">关于我们</a></li>
-						<li><a href="ffxm.html">服务项目</a></li>
-						<li><a href="news.html">新闻中心</a></li>
-						<li><a href="fflc.html">服务流程</a></li>
-						<li><a href="lxwm.html">联系我们</a></li>
-					</ul>
-					<div class="clearfix xs-nav" id="sidr-left">
-						<ul>
-							<li class="dq"><a href="index.html">网站首页</a></li>
-							<li><a href="about.html">关于我们</a></li>
-							<li><a href="ffxm.html">服务项目</a></li>
-							<li><a href="news.html">新闻中心</a></li>
-							<li><a href="fflc.html">服务流程</a></li>
-							<li><a href="lxwm.html">联系我们</a></li>
-						</ul>
-					</div>
-				</nav>
-			</section>
-		</header>
+  
 		<section class="ny-ban wow fadeInDown">
-			<img src="img/ba.jpg"/>			
+			<img src="/img/ba.jpg"/>			
 		</section>
 		
 		<section class="container wrap clearfix">
@@ -39,30 +11,53 @@
     			<h3>新闻中心</h3>
     		</div>
     		
-    		<div class="sub-nav clearfix wow fadeInUp">
-    			<ul class="clearfix">
-    				<li class="dq"><a href="#">公司新闻</a></li>
-    				<li><a href="#">行业动态</a></li>
-    				<li><a href="#">媒体报道</a></li>
-    			</ul>
-    			<div class="fr wz-box">
-    				<a href="#">网站首页</a> > <a href="#">关于我们</a> > <a href="#">网站首页</a>
-    			</div>
-    		</div>
+	    		<div class="sub-nav clearfix wow fadeInUp">
+	    			<ul class="clearfix">
+	    				<li @if($row->type==1)class="dq"@endif><a href="/news">公司新闻</a></li>
+	    				<li @if($row->type==2)class="dq"@endif><a href="/actives">行业动态</a></li>
+	    				<li @if($row->type==3)class="dq"@endif><a href="/laws">政策法规</a></li>
+	    			</ul>
+	    			<div class="fr wz-box">
+	    				<a href="/">网站首页</a> > <a href="/news">新闻中心</a> >  
+	    				@if($row->type==1)<a href="/news">公司新闻</a>@endif
+	    				@if($row->type==2)<a href="/actives">行业动态</a>@endif
+	    				@if($row->type==3)<a href="/laws">政策法规</a>@endif 
+	    			</div>
+	    		</div>
     		
     		<div class="ff-txt clearfix">
     			<div class="ff-titl wow pulse">
-    				<h1>ISO14001</h1>
+    				<h1>{{$row->title}}</h1>
     				<div class="inf-t">
-    					发布时间: 2016-01-11 19:51  
+    				作者：{{$row->author}} 		发布时间: {{$row->created_at}} 	
     				</div>
     			</div>
     			
     			<div class="ff-txtnr wow fadeInUp">
-    				<p>美国专利商标局收到商标注册申请资料后，会先详细检视申请表格及所有附件，以查看表格内须填写的部分是否已经填妥、有关资料是否正确、所需资料是否不全，费用是否交齐，如一切妥当，给予一个申请编号，发放受理通知书，时间大概为25天。</p><br />
-	    			<p>美国专利商标局收到商标注册申请资料后，会先详细检视申请表格及所有附件，以查看表格内须填写的部分是否已经填妥、有关资料是否正确、所需资料是否不全，费用是否交齐，如一切妥当，给予一个申请编号，发放受理通知书，时间大概为25天。</p><br />
-	    			<p>美国专利商标局收到商标注册申请资料后，会先详细检视申请表格及所有附件，以查看表格内须填写的部分是否已经填妥、有关资料是否正确、所需资料是否不全，费用是否交齐，如一切妥当，给予一个申请编号，发放受理通知书，时间大概为25天。</p><br />
-	    			<p>美国专利商标局收到商标注册申请资料后，会先详细检视申请表格及所有附件，以查看表格内须填写的部分是否已经填妥、有关资料是否正确、所需资料是否不全，费用是否交齐，如一切妥当，给予一个申请编号，发放受理通知书，时间大概为25天。</p>
+    				 {!!$row->content!!}
+    			</div>
+
+    			<div class="col-sm-12">
+    				<div  class="news_pre">
+    				<b>上一篇：</b>
+					@if ($pre)
+					<a href="/new/{{$pre->id}}"  >{{$pre->title}}</a>
+					@else
+					<a href="#" >这是第一篇了</a>
+					@endif
+    				</div>
+ 
+					
+
+					<div class="news_next">
+					<b>下一篇：</b>
+					@if ($next)
+					<a  href="/new/{{$next->id}}">{{$next->title}}</a>
+					@else
+					<a href="#"   >这是最后一篇了</a>
+					@endif
+					</div>
+					 
     			</div>
     		</div>
 		</section>

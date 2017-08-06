@@ -21,7 +21,11 @@ Route::post('/feedback', 'webController@feedbackupdate');
 Route::get('/server', 'webController@server');
 Route::get('/object', 'webController@object');
 Route::get('/news', 'webController@news');
-
+Route::get('/new/{id}','webController@news_detail');
+Route::get('/laws', 'webController@laws');
+Route::get('/actives', 'webController@actives');
+Route::post('/search','webController@search');
+Route::get('/search','webController@search');
 
 
 Auth::routes();
@@ -45,6 +49,10 @@ Route::resource('/admin/article','admin\articleController');
 Route::resource('/admin/contact','admin\contactController',['only' => ['index', 'show','edit','update']]);
 Route::resource('/admin/webconfig','admin\webconfigController',['only' => ['index', 'show','edit','update']]);
 
+Route::get('/admin/partner/search','admin\partnerController@search');
+Route::post('/admin/partner/search','admin\partnerController@search');
+Route::resource('/admin/partner','admin\partnerController');
+
 
 
 Route::get('/admin/feedback/search','admin\feedbackController@search');
@@ -65,7 +73,7 @@ Route::get('/admin/admins/{id}','adminController@show');
 Route::get('/admin/admins/{id}/edit','adminController@edit');
 Route::post('/admin/admins/{id}','adminController@update');
 
-// Route::get('/admin/ckedituploads','admin\ckeditController@upload');
+Route::post('/admin/ckedituploads','admin\ckeditController@upload');
 
 
 

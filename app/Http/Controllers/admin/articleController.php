@@ -46,13 +46,21 @@ class articlecontroller extends Controller
         $this->validate($request, [
            'title' => 'required|max:255'
         ]);
-        $this->manager->setFolderName('uploads/article');
+ 
+        $article = new article;
+                $this->manager->setFolderName('uploads/article');
         $upload = $this->manager->uploadImage($request,'pic');
         if($upload['error']==NULL)
         {
-        $article = new article;
+            $article->pic=$upload['filename'];
+        }
+        else
+        {
+            return redirect()->back()->withInput()->widthErrors('图片上传失败');
+        }
         $article->title=$request->get('title');
-        $article->pic=$upload['filename'];
+        $article->type=$request->get('type');
+        $article->author=$request->get('author');
         $article->create_author=Auth::guard('admin')->id();
         $article->update_author=Auth::guard('admin')->id();
         $article->content=$request->get('content');
@@ -61,12 +69,7 @@ class articlecontroller extends Controller
             }else{
                 return redirect()->back()->withInput()->withErrors('保存失败！'); 
         }
-
-        }
-        else
-        {
-            return redirect()->back()->widthErrors('图片上传失败');
-        }
+ 
  
     }
     public function update(Request $request,$id)
@@ -77,6 +80,8 @@ class articlecontroller extends Controller
         $article=article::where('id',$id)->where('del',0)->first();
         $article->title=$request->get('title');
         $article->content=$request->get('content');
+                $article->type=$request->get('type');
+        $article->author=$request->get('author');
         if($upload['error']==null)
         {
         $article->pic=$upload['filename'];

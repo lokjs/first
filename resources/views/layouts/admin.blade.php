@@ -79,9 +79,10 @@
              <li class="menu-list @if($group=='content') nav-active @endif"><a href="#"><i class="fa fa-th-list"></i> <span>内容管理</span></a>
                     <ul class="sub-menu-list">
                         <li @if ($uri=='banner') class="active" @endif><a    href="/admin/banner">轮播图</a></li>
-                        <li @if ($uri=='article') class="active" @endif><a href="/admin/article">我的案例</a></li>
-                          <li @if ($uri=='contact') class="active" @endif><a href="/admin/contact">联系我们</a></li>
+                        <li @if ($uri=='article') class="active" @endif><a href="/admin/article">新闻中心</a></li>
+                          <li @if ($uri=='contact') class="active" @endif><a href="/admin/contact">关于我们</a></li>
                         <li @if ($uri=='feedback') class="active" @endif><a href="/admin/feedback">留言板</a></li>
+                        <li @if ($uri=='partner') class="active" @endif><a href="/admin/partner">合作伙伴</a></li>
                     </ul>
                 </li>
              <li class="menu-list @if($group=='sys') nav-active @endif"><a href="#"><i class="fa fa-th-list"></i> <span>系统管理</span></a>

@@ -148,7 +148,7 @@ html { overflow-y: scroll; min-width: 320px;}
 
 .box4  #news-imgfoc .swiper-slide p{ background: rgba(93, 81, 193,.8); height: 40px; line-height: 40px; position: absolute; left: 0; bottom: 0; width: 100%; overflow: hidden;}
 .box4  #news-imgfoc .swiper-slide p span{ text-align: center;  display: block; padding: 0 20px; color: #fff; font-size: 15px;}
-.box4  #news-imgfoc .swiper-slide img{ width: 100%; height: auto;}
+.box4  #news-imgfoc .swiper-slide img{ width: 100%;  }
 
 .box5{ padding: 30px 0;}
 #hb-img .swiper-slide {text-align: center;}

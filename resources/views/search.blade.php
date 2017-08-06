@@ -13,15 +13,13 @@
 	    		
 	    		<div class="sub-nav clearfix wow fadeInUp">
 	    			<ul class="clearfix">
-	    				<li @if($type==1)class="dq"@endif><a href="/news">公司新闻</a></li>
-	    				<li @if($type==2)class="dq"@endif><a href="/actives">行业动态</a></li>
-	    				<li @if($type==3)class="dq"@endif><a href="/laws">政策法规</a></li>
+	    				<li ><a href="/news">公司新闻</a></li>
+	    				<li ><a href="/actives">行业动态</a></li>
+	    				<li ><a href="/laws">政策法规</a></li>
 	    			</ul>
 	    			<div class="fr wz-box">
 	    				<a href="/">网站首页</a> > <a href="/news">新闻中心</a> > <a href="#">
-	    				@if($type==1)公司新闻@endif
-	    				@if($type==2)行业动态@endif
-	    				@if($type==3)政策法规@endif</a>
+	    				检索结果</a>
 	    			</div>
 	    		</div>
 	    		

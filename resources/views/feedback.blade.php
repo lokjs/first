@@ -3,7 +3,7 @@
 		<section class="ny-ban wow fadeInDown">
 			<img src="img/ba.jpg"/>			
 		</section>
-		
+
 		<section class="container wrap clearfix">
 				<div class="title1 wow slideInLeft">
 	    			<h1>ABOUT US</h1>
@@ -64,7 +64,8 @@
 			if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
 				new WOW().init();
 			};
-
-
+			@if (session('ok'))
+                    layer.msg("{{ session('ok') }}");
+            @endif
 </script>
  @endsection('content')
